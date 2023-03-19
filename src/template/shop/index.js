@@ -3,6 +3,7 @@ import { Banner } from "./components/Banner";
 import { Companies } from "./components/Companies";
 import { Defination } from "./components/Defination";
 import { Instrunction } from "./components/Instruction";
+import { Restructions } from "./components/Restrictions";
 
 export function Home() {
   return (
@@ -12,6 +13,7 @@ export function Home() {
       <Defination />
       <Companies />
       <Instrunction />
+      <Restructions />
     </div>
   );
 }

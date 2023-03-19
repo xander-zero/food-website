@@ -12,7 +12,7 @@ export function ShopLayout({ children }) {
           </h1>
         </div>
         <div className="flex gap-4 items-center">
-          <Link href="/menu" className="text-black">
+          <Link href="/shop/product" className="text-black">
             Menu
           </Link>
           <Link href="/categories" className="text-black">
