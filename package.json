@@ -10,6 +10,7 @@
     "serve-json": "json-server --watch db.json --port 3005"
   },
   "dependencies": {
+    "antd": "^4.1.1",
     "next": "13.0.7",
     "next-auth": "^4.20.1",
     "react": "18.2.0",
