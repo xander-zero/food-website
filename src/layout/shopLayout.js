@@ -24,7 +24,7 @@ export function ShopLayout({ children }) {
         </div>
       </header>
       <div>{children}</div>
-      <footer>
+      <footer className="bg-[#56cf52] p-3 text-center text-white font-semibold">
         <a
           href="https://portfolio-xander.vercel.app/"
           target="_blank"

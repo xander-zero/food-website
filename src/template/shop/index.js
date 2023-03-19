@@ -2,6 +2,7 @@ import { Attribute } from "./components/Attribute";
 import { Banner } from "./components/Banner";
 import { Companies } from "./components/Companies";
 import { Defination } from "./components/Defination";
+import { Instrunction } from "./components/Instruction";
 
 export function Home() {
   return (
@@ -10,6 +11,7 @@ export function Home() {
       <Attribute />
       <Defination />
       <Companies />
+      <Instrunction />
     </div>
   );
 }

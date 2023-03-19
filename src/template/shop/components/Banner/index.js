@@ -7,8 +7,8 @@ export function Banner() {
         <h2 className="font-semibold text-2xl border-b-2 border-[#56cf52] w-[140px] mb-8">
           XanderFood
         </h2>
-        <p className="font-semibold">Food Delivery and Takeout!</p>
-        <span className="text-gray-500 my-6 w-[70%] leading-8">
+        <p className="font-semibold text-xl">Food Delivery and Takeout!</p>
+        <span className="text-gray-500 my-6 w-[70%] leading-8 text-lg">
           XanderFood is an online food ordering and delivery platform launched
           by Uber in 2014. Meals are delivered by couriers using cars, scooters,
           bikes, or on food.
