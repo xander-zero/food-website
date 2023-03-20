@@ -6,7 +6,7 @@ export function ShopLayout({ children }) {
       <header className="container mx-auto flex items-center justify-between py-4">
         <div>
           <h1 className="text-3xl font-semibold">
-            <Link href="/" className="text-[#56cf52]">
+            <Link href="/shop" className="text-[#56cf52]">
               XanderFood
             </Link>
           </h1>
