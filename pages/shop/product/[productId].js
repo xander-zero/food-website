@@ -1,11 +1,18 @@
+import { useRouter } from "next/router";
 import ShopLayout from "src/layout/shopLayout";
 import { ProductDetail } from "src/template/ProductDetail";
 import { fetchProductDetail } from "src/service/shop/product-endpoint";
-import { fetchProducts } from "../../../src/service/shop/product-endpoint";
+import { fetchProducts } from "src/service/shop/product-endpoint";
+import { Spin } from "antd";
 
 export default function ProductDetailPage({ data }) {
-  console.log("data", data);
-  return <ProductDetail />;
+  const router = useRouter();
+
+  if (router.isFallback) {
+    <Spin spinning={true} />;
+  }
+
+  return <ProductDetail data={data} />;
 }
 
 ProductDetailPage.getLayout = function (page) {
