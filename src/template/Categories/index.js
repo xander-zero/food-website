@@ -69,6 +69,7 @@ export function Categories({ data }) {
             className="w-[200px] p-2 shadow-xl rounded-lg outline-none"
             name="difficulty"
             onChange={handleChange}
+            value={query.difficulty}
           >
             {DIFFICULTY.map((item) => (
               <option value={item.value} key={item.value}>
@@ -80,6 +81,7 @@ export function Categories({ data }) {
             className="w-[200px] p-2 shadow-xl rounded-lg outline-none"
             name="time"
             onChange={handleChange}
+            value={query.time}
           >
             {TIME.map((item) => (
               <option value={item.value} key={item.value}>
