@@ -15,7 +15,7 @@ export function ShopLayout({ children }) {
           <Link href="/shop/product" className="text-black">
             Menu
           </Link>
-          <Link href="/categories" className="text-black">
+          <Link href="/shop/categories" className="text-black">
             Categories
           </Link>
           <button className="bg-[#56cf52] px-6 py-2 text-white rounded-lg">
