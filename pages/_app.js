@@ -1,7 +1,7 @@
 import { ConfigProvider } from "antd";
 import PageLoading from "src/components/PageLodaing";
-import "../styles/globals.css";
 import "antd/dist/antd.css";
+import "../styles/globals.css";
 
 function MyApp({ Component, pageProps }) {
   const getLayout = Component.getLayout || ((page) => page);

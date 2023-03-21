@@ -18,9 +18,11 @@ export function ShopLayout({ children }) {
           <Link href="/shop/categories" className="text-black">
             Categories
           </Link>
-          <button className="bg-[#56cf52] px-6 py-2 text-white rounded-lg">
-            Login
-          </button>
+          <Link href="/auth/login">
+            <button className="bg-[#56cf52] px-6 py-2 text-white rounded-lg">
+              Login
+            </button>
+          </Link>
         </div>
       </header>
       <div>{children}</div>
