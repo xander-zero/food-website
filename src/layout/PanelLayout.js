@@ -11,11 +11,13 @@ const { Header, Sider, Content } = Layout;
 export function PanelLayout({ children }) {
   const [collapsed, setCollapsed] = useState(false);
   return (
-    <Layout>
-      <Sider trigger={null} collapsible collapsed={collapsed}>
-        <div className="logo" />
+    <Layout className="h-[100vh]">
+      <Sider trigger={null} collapsible collapsed={collapsed} theme="light">
+        <div className="logo w-[100%] h-16 flex items-center justify-center text-xl">
+          Xander
+        </div>
         <Menu
-          theme="dark"
+          className="h-[100vh]"
           mode="inline"
           defaultSelectedKeys={["1"]}
           items={[
@@ -37,31 +39,24 @@ export function PanelLayout({ children }) {
           ]}
         />
       </Sider>
-      <Layout className="site-layout">
+      <Layout>
         <Header
-          className="site-layout-background"
+          className="bg-white"
           style={{
             padding: 0,
           }}
         >
-          {React.createElement(
-            collapsed ? MenuUnfoldOutlined : MenuFoldOutlined,
-            {
-              className: "trigger",
-              onClick: () => setCollapsed(!collapsed),
-            }
-          )}
+          <div className="ml-4">
+            {React.createElement(
+              collapsed ? MenuUnfoldOutlined : MenuFoldOutlined,
+              {
+                className: "trigger text-lg",
+                onClick: () => setCollapsed(!collapsed),
+              }
+            )}
+          </div>
         </Header>
-        <Content
-          className="site-layout-background"
-          style={{
-            margin: "24px 16px",
-            padding: 24,
-            minHeight: 280,
-          }}
-        >
-          {children}
-        </Content>
+        <Content className="site-layout-background">{children}</Content>
       </Layout>
     </Layout>
   );
