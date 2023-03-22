@@ -34,7 +34,7 @@ export function LoginForm() {
           },
         ]}
       >
-        <Input prefix={<MailOutlined />} placeholder="Email" />
+        <Input prefix={<MailOutlined />} placeholder="admin@gmail.com" />
       </Form.Item>
       <Form.Item
         name="password"
@@ -45,7 +45,7 @@ export function LoginForm() {
           },
         ]}
       >
-        <Input.Password prefix={<LockOutlined />} placeholder="Password" />
+        <Input.Password prefix={<LockOutlined />} placeholder="admin" />
       </Form.Item>
 
       <Form.Item style={{ marginBottom: 0 }}>
