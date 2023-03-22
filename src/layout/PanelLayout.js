@@ -5,16 +5,30 @@ import {
   UserOutlined,
   VideoCameraOutlined,
 } from "@ant-design/icons";
-import { Layout, Menu } from "antd";
+import { Avatar, Layout, Menu, Tag } from "antd";
 import React, { useState } from "react";
 const { Header, Sider, Content } = Layout;
 export function PanelLayout({ children }) {
   const [collapsed, setCollapsed] = useState(false);
   return (
     <Layout className="h-[100vh]">
-      <Sider trigger={null} collapsible collapsed={collapsed} theme="light">
-        <div className="logo w-[100%] h-16 flex items-center justify-center text-xl">
-          Xander
+      <Sider
+        trigger={null}
+        collapsible
+        collapsed={collapsed}
+        theme="light"
+        width={250}
+      >
+        <div className="logo w-[100%] h-16 flex items-center p-4 text-xl">
+          <Avatar size="large">MA</Avatar>
+          {!collapsed && (
+            <div className="flex flex-col mx-2">
+              <p className="text-sm">Mahmoud Ansari</p>
+              <p className="text-xs">
+                <Tag color="green">SuperAdmin</Tag>
+              </p>
+            </div>
+          )}
         </div>
         <Menu
           className="h-[100vh]"
