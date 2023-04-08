@@ -1,8 +1,8 @@
 import { NextResponse } from "next/server";
-import { APP_BASE_URL } from "src/constants/configs";
+import { APP_REQUEST_URL } from "src/constants/configs";
 
 export function middleware(request) {
   if (request.nextUrl.pathname === "/") {
-    return NextResponse.redirect(`${APP_BASE_URL}/shop`);
+    return NextResponse.redirect(`${APP_REQUEST_URL}/shop`);
   }
 }

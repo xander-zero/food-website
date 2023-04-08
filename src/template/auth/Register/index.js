@@ -1,13 +1,20 @@
 import { useRouter } from "next/router";
-import { Button, Form, Input, message } from "antd";
+import { Button, Form, Input } from "antd";
 import { LockOutlined, MailOutlined } from "@ant-design/icons";
 import Link from "next/link";
+import { useMutation } from "@tanstack/react-query";
+import { queryRegister } from "src/service/auth";
 
 export function RegisterForm() {
   const router = useRouter();
 
+  const { mutate: onRegister, isLoading } = useMutation(queryRegister());
+
   const onFinish = (values) => {
-    console.log("Hello", values);
+    const data = { data: values };
+    onRegister(data, {
+      onSuccess: () => router.push("/auth/login"),
+    });
   };
 
   return (
@@ -79,7 +86,9 @@ export function RegisterForm() {
 
       <Form.Item className="mb-0 ">
         <div className="my-1 flex items-center justify-between">
-          <Button htmlType="submit">Register</Button>
+          <Button htmlType="submit" loading={isLoading}>
+            Register
+          </Button>
           <Link href="/auth/register" className="text-[12px] text-[#1890ff]">
             Login Now
           </Link>
