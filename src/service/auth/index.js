@@ -16,3 +16,15 @@ export const queryRegister = ({ ...config } = {}) => ({
   mutationKey: ["/register"],
   ...config,
 });
+
+export const queryLogin = ({ ...config } = {}) => ({
+  mutationFn: (data) =>
+    rqMutate({
+      queryKeys: [["/login"]],
+      method: "put",
+      url: "/login",
+      data,
+    }),
+  mutationKey: ["/login"],
+  ...config,
+});

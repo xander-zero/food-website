@@ -2,17 +2,22 @@ import { useRouter } from "next/router";
 import { Button, Form, Input, message } from "antd";
 import { LockOutlined, MailOutlined } from "@ant-design/icons";
 import Link from "next/link";
+import { useMutation } from "@tanstack/react-query";
+import { queryLogin } from "src/service/auth";
 
 export function LoginForm() {
   const router = useRouter();
 
+  const { mutate: onLogin, isLoading, data } = useMutation(queryLogin());
+
   const onFinish = (values) => {
-    const { email, password } = values;
-    if (email === "admin@gmail.com" && password === "admin") {
-      router.push("/panel");
-    } else {
-      message.error("Username or Password is wrong!");
-    }
+    const data = { data: values };
+
+    onLogin(data, {
+      onSuccess: () => {
+        router.push("/panel");
+      },
+    });
   };
 
   return (
@@ -51,7 +56,9 @@ export function LoginForm() {
 
       <Form.Item className="mb-0 ">
         <div className="my-1 flex items-center justify-between">
-          <Button htmlType="submit">Login</Button>
+          <Button htmlType="submit" loading={isLoading}>
+            Login
+          </Button>
           <Link href="/auth/register" className="text-[12px] text-[#1890ff]">
             Register Now!
           </Link>
