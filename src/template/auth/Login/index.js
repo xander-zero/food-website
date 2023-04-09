@@ -8,14 +8,23 @@ import { queryLogin } from "src/service/auth";
 export function LoginForm() {
   const router = useRouter();
 
-  const { mutate: onLogin, isLoading, data } = useMutation(queryLogin());
+  const {
+    mutate: onLogin,
+    isLoading,
+    data: userInfo,
+  } = useMutation(queryLogin());
 
   const onFinish = (values) => {
     const data = { data: values };
 
     onLogin(data, {
-      onSuccess: () => {
-        router.push("/panel");
+      onSuccess: (userInfo) => {
+        const user = userInfo.data;
+        if (user?.isAdmin) {
+          router.push("/panel");
+        } else {
+          router.push("/");
+        }
       },
     });
   };

@@ -38,7 +38,7 @@ export function PanelLayout({ children }) {
             {
               key: "1",
               icon: <UserOutlined />,
-              label: "nav 1",
+              label: "User",
             },
             {
               key: "2",

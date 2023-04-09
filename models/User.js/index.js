@@ -16,6 +16,10 @@ const UserSchema = new Schema({
     required: true,
     minLength: 3,
   },
+  isAdmin: {
+    type: Boolean,
+    default: false,
+  },
   phoneNumber: String,
   address: String,
   postalCode: Number,
