@@ -6,8 +6,8 @@ export function PageHeaderWrapper({ title, icon, children, ...props }) {
       {...props}
       title={
         title || icon ? (
-          <h3 style={{ margin: 0 }}>
-            {icon} {title}
+          <h3 style={{ margin: 0 }} className="flex items-center">
+            <span className="flex items-center mr-2">{icon}</span> {title}
           </h3>
         ) : null
       }
