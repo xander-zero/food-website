@@ -1,25 +1,46 @@
 import { useMemo, useState } from "react";
 import { UserOutlined } from "@ant-design/icons";
 import { Button, Space, Tag } from "antd";
-import { useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery } from "@tanstack/react-query";
 
 import CustomTable from "src/components/CustomTable";
 import useTableSearchColumn from "src/utils/hooks/useTableSearchColumn";
 
 import { PageHeaderWrapper } from "src/components/PageHeaderWrapper";
 import { CustomModal } from "src/components/CustomModal";
-import { queryFetchUsers } from "src/service/panel/user-endpoints";
+import {
+  queryFetchUsers,
+  queryAddUser,
+} from "src/service/panel/user-endpoints";
 
 import { AddUserModal } from "./AddUserModal";
 
 export function UserTable() {
   const [isVisibleUserModal, setIsVisibleUserModal] = useState(false);
+  const [form, setForm] = useState(null);
+
+  const { getColumnSearchProps, rowClassName } = useTableSearchColumn();
+
+  const { data: usersData, isLoading: loadingFetchUser } = useQuery(
+    queryFetchUsers()
+  );
+
+  const { mutate: onAddUser, isLoading: loadingAddUser } = useMutation(
+    queryAddUser()
+  );
 
   const onOpenAddUserModal = () => setIsVisibleUserModal(true);
 
-  const { data: usersData, isLoading } = useQuery(queryFetchUsers());
-
-  const { getColumnSearchProps, rowClassName } = useTableSearchColumn();
+  const handleAddUser = () => {
+    form.validateFields().then((values) => {
+      onAddUser(
+        { data: values },
+        {
+          onSuccess: () => setIsVisibleUserModal(false),
+        }
+      );
+    });
+  };
 
   const columns = useMemo(() => {
     const col = [
@@ -73,6 +94,8 @@ export function UserTable() {
     return col;
   }, []);
 
+  const isLoading = loadingAddUser || loadingFetchUser;
+
   return (
     <PageHeaderWrapper
       title="Users"
@@ -100,7 +123,8 @@ export function UserTable() {
       <CustomModal
         visible={isVisibleUserModal}
         close={() => setIsVisibleUserModal(false)}
-        children={<AddUserModal />}
+        onOk={handleAddUser}
+        children={<AddUserModal setForm={setForm} />}
       />
     </PageHeaderWrapper>
   );

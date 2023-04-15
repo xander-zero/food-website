@@ -20,3 +20,10 @@ a {
   color: inherit;
   text-decoration: none;
 }
+.ant-form-item {
+  margin-bottom: 10px;
+}
+.ant-btn-primary {
+  background-color: #39a5ff !important;
+  color: white !important;
+}
