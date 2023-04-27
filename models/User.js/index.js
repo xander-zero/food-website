@@ -20,6 +20,10 @@ const UserSchema = new Schema({
     type: Boolean,
     default: false,
   },
+  password: {
+    type: String,
+    required: true,
+  },
   phoneNumber: String,
   address: String,
   postalCode: Number,

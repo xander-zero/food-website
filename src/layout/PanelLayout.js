@@ -1,15 +1,19 @@
+import React, { useState } from "react";
+import Link from "next/link";
+
 import {
   MenuFoldOutlined,
   MenuUnfoldOutlined,
-  UploadOutlined,
+  UnorderedListOutlined,
   UserOutlined,
-  VideoCameraOutlined,
 } from "@ant-design/icons";
 import { Avatar, Layout, Menu, Tag } from "antd";
-import React, { useState } from "react";
+
 const { Header, Sider, Content } = Layout;
+
 export function PanelLayout({ children }) {
   const [collapsed, setCollapsed] = useState(false);
+
   return (
     <Layout className="h-[100vh]">
       <Sider
@@ -38,17 +42,12 @@ export function PanelLayout({ children }) {
             {
               key: "1",
               icon: <UserOutlined />,
-              label: "User",
+              label: <Link href="/panel/user">User</Link>,
             },
             {
               key: "2",
-              icon: <VideoCameraOutlined />,
-              label: "nav 2",
-            },
-            {
-              key: "3",
-              icon: <UploadOutlined />,
-              label: "nav 3",
+              icon: <UnorderedListOutlined />,
+              label: <Link href="/panel/products">Products</Link>,
             },
           ]}
         />

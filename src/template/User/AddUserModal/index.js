@@ -1,9 +1,21 @@
-import { Button, Form, Input, Select, Tag } from "antd";
+import { Form, Input, Select, Tag } from "antd";
+import { useEffect } from "react";
 import { LIST_ROLE, LIST_ROLE_INFO } from "src/constants/user";
 
-export function AddUserModal({ setForm }) {
+export function AddUserModal({ setForm, userData, form }) {
+  useEffect(() => {
+    if (userData) {
+      form?.setFieldsValue(userData);
+    }
+  }, [userData]);
+
   return (
-    <Form layout="vertical" className="gap-1" ref={setForm}>
+    <Form
+      layout="vertical"
+      className="gap-1"
+      ref={setForm}
+      initialValues={userData ?? ""}
+    >
       <Form.Item
         label="First Name"
         name="firstName"

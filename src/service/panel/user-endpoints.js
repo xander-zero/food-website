@@ -16,3 +16,26 @@ export const queryAddUser = ({ ...config } = {}) => ({
   mutationKey: ["/user"],
   ...config,
 });
+
+export const queryDeleteUser = ({ ...config } = {}) => ({
+  mutationFn: (userId) =>
+    rqMutate({
+      queryKeys: [["/user"]],
+      method: "delete",
+      url: `/user/${userId}`,
+    }),
+  mutationKey: ["/user"],
+  ...config,
+});
+
+export const queryUpdateUser = ({ ...config } = {}) => ({
+  mutationFn: ({ data, userId }) =>
+    rqMutate({
+      queryKeys: [["/user"]],
+      method: "put",
+      url: `/user/${userId}`,
+      data,
+    }),
+  mutationKey: ["/user"],
+  ...config,
+});

@@ -1,7 +1,8 @@
 import { PanelLayout } from "src/layout/PanelLayout";
+import { ProductTable } from "src/template/Product/ProductTable";
 
 export default function Products() {
-  return <div>Hello Product Page</div>;
+  return <ProductTable />;
 }
 
 Products.getLayout = function (page) {

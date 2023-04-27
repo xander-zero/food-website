@@ -19,9 +19,9 @@ export default async function handler(req, res) {
       return res.status(400).json({ status: "faild", message: "Invalid Data" });
     try {
       const userExist = await User.find({ email: data.email });
-      console.log("userExist", userExist);
-      if (userExist) {
-        res.status(200).json({
+
+      if (userExist.email === data.email) {
+        return res.status(200).json({
           status: "success",
           message: "user login successfully",
           data: userExist[0],
