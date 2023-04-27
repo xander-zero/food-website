@@ -2,6 +2,8 @@ import connectDB from "src/utils/connectDB";
 import User from "models/User.js";
 
 export default async function handler(req, res) {
+  if (req.method !== "POST") return;
+
   try {
     await connectDB();
   } catch (error) {
@@ -12,11 +14,15 @@ export default async function handler(req, res) {
     });
     return;
   }
+
   if (req.method === "PUT") {
     const data = req.body.data;
 
-    if (!data.email)
-      return res.status(400).json({ status: "faild", message: "Invalid Data" });
+    if (!data.email || !data.password)
+      return res.status(422).json({ status: "faild", message: "Invalid Data" });
+
+    const user = await User.findOne({ email: data.email });
+
     try {
       const userExist = await User.find({ email: data.email });
 
