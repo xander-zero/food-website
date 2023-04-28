@@ -21,7 +21,7 @@ export const queryLogin = ({ ...config } = {}) => ({
   mutationFn: (data) =>
     rqMutate({
       queryKeys: [["/login"]],
-      method: "put",
+      method: "post",
       url: "/login",
       data,
     }),

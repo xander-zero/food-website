@@ -60,7 +60,7 @@ export function LoginForm() {
           },
         ]}
       >
-        <Input.Password prefix={<LockOutlined />} placeholder="admin" />
+        <Input.Password prefix={<LockOutlined />} placeholder="password" />
       </Form.Item>
 
       <Form.Item className="mb-0 ">
